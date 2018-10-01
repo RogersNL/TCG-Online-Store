@@ -4,7 +4,7 @@
   "description": "An online store simulation",
   "main": "index.js",
   "scripts": {
-    "test": "jest; exit 0",
+    "test": "jest --watchAll",
     "start": "webpack-dev-server",
     "lint": "eslint src/** src/**/**; exit 0",
     "lint-fix": "eslint src/** src/**/** --fix; exit 0"

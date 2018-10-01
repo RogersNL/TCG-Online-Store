@@ -16,12 +16,12 @@ describe("rootReducer", () => {
     });
   });
   test('Should contain accountListReducer Logic', () => {
-    expect(store.getState().masterTicketList).toEqual(accountListReducer(undefined, { type: null }));
+    expect(store.getState().masterAccountList).toEqual(accountListReducer(undefined, { type: null }));
   });
   test('Should contain selectedItem Logic', () => {
-    expect(store.getState().selectedTicket).toEqual(itemReducer(undefined, { type: null }));
+    expect(store.getState().selectedItem).toEqual(itemReducer(undefined, { type: null }));
   });
   test('Should contain selectedAccount Logic', () => {
-    expect(store.getState().selectedTicket).toEqual(accountReducer(undefined, { type: null }));
+    expect(store.getState().selectedAccount).toEqual(accountReducer(undefined, { type: null }));
   });
 });
