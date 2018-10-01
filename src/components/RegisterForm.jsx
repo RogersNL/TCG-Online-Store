@@ -1,16 +1,18 @@
 import React from 'react';
-import { addAccount } from './../actions';
+import { createAccount } from './../actions';
+import { connect } from 'react-redux';
 
 function RegisterForm(props) {
   let _name = null;
   let _username = null;
+  let _email = null;
   let _password = null;
   let _passwordconfirm = null;
 
   function handleAddingNewAccountFormSubmission(event){
     const { dispatch } = props;
     event.preventDefault();
-    dispatch(addAccount(_name.value, _username.value, _email.value, _password.value));
+    dispatch(createAccount(_name.value, _username.value, _email.value, _password.value, 0, {}, {}));
     _name.value = '';
     _username.value = '';
     _email.value = '';
@@ -19,7 +21,7 @@ function RegisterForm(props) {
   }
   return (
     <div>
-      <form>
+      <form onSubmit={handleAddingNewAccountFormSubmission}>
         <input
           type='text'
           id='name'
@@ -51,7 +53,7 @@ function RegisterForm(props) {
           ref={(input) => {_passwordconfirm = input;}}
           className='form-control'/>
         <button className='btn btn-info' type='submit'>Create Account</button>
-        </form>
+      </form>
     </div>
   );
 }

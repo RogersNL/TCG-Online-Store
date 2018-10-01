@@ -11,13 +11,15 @@ import OrderHistory from './OrderHistory';
 import Home from './Home';
 import CheckoutForm from './CheckoutForm';
 import ConfirmCheckout from './ConfirmCheckout';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './../actions';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterAccountList,
       selectedItem: null,
       selectedAccount: null
     }
@@ -27,7 +29,7 @@ class App extends React.Component {
     const { watchFirebaseAccountsRef } = actions;
     dispatch(watchFirebaseAccountsRef());
 
-    }
+  }
   render(){
     return (
       <div>
@@ -52,4 +54,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    masterAccountList: state.masterAccountList
+  };
+};
+App.propTypes = {
+  masterAccountList: PropTypes.object
+};
+export default withRouter(connect(mapStateToProps)(App));
