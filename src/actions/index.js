@@ -35,10 +35,13 @@ import * as types from './../constants/ActionTypes';
 //   };
 // }
 
-export const createAccount = (name, username, email, password) => ({
+export const createAccount = (name, username, email, password, id, cart, orderHistory) => ({
   type: types.ADD_ACCOUNT,
   name,
   username,
   email,
-  password
+  password,
+  id,
+  cart,
+  orderHistory
 });
