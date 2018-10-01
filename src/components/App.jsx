@@ -14,6 +14,19 @@ import ConfirmCheckout from './ConfirmCheckout';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedItem: null,
+      selectedAccount: null
+    }
+  }
+  componentWillMount() {
+    const { dispatch } = this.props;
+    const { watchFirebaseAccountsRef } = actions;
+    dispatch(watchFirebaseAccountsRef());
+
+    }
   render(){
     return (
       <div>
