@@ -1,6 +1,7 @@
 import React from 'react';
-import { createAccount } from './../actions';
+import { addAccount } from './../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 function RegisterForm(props) {
   let _name = null;
@@ -10,9 +11,10 @@ function RegisterForm(props) {
   let _passwordconfirm = null;
 
   function handleAddingNewAccountFormSubmission(event){
+    props.onValidatingForm(_name.value, _username.value, _email.value, _password.value, _passwordconfirm.value);
     const { dispatch } = props;
     event.preventDefault();
-    dispatch(createAccount(_name.value, _username.value, _email.value, _password.value, 0, {}, {}));
+    dispatch(addAccount(_name.value, _username.value, _email.value, _password.value, {}, {}));
     _name.value = '';
     _username.value = '';
     _email.value = '';
@@ -57,6 +59,10 @@ function RegisterForm(props) {
     </div>
   );
 }
+RegisterForm.propTypes = {
+  onValidatingForm: PropTypes.func
+};
+
 RegisterForm = connect()(RegisterForm);
 
 export default RegisterForm;

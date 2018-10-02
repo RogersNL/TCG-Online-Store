@@ -8,6 +8,7 @@ import Cart from './Cart';
 import Account from './Account';
 import EditAccount from './EditAccount';
 import OrderHistory from './OrderHistory';
+import RegisterControl from './RegisterControl';
 import Home from './Home';
 import CheckoutForm from './CheckoutForm';
 import ConfirmCheckout from './ConfirmCheckout';
@@ -22,7 +23,7 @@ class App extends React.Component {
     this.state = {
       selectedItem: null,
       selectedAccount: null
-    }
+    };
   }
   componentWillMount() {
     const { dispatch } = this.props;
@@ -38,7 +39,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/browse' component={Browse} />
-            <Route path='/register' component={RegisterForm} />
+            <Route path='/register' component={RegisterControl} />
             <Route path='/sign-in' component={SignIn} />
             <Route path='/account' component={Account} />
             <Route path='/cart' component={Cart} />

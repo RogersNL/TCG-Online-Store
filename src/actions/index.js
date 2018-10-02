@@ -1,16 +1,16 @@
 import * as types from './../constants/ActionTypes';
 import constants from './../constants';
-const { firebaseConfig } = constants;
+const { firebaseConfig, c } = constants;
 import firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
 const accounts = firebase.database().ref('accounts');
 
-export function addAccount(_username, _password, _name, _address, _email, _cart, _orderHistory) {
+export function addAccount(_name, _username, _email, _password, _cart, _orderHistory) {
   return () => accounts.push({
+    name: _name,
     username: _username,
     password: _password,
-    address: _address,
     email: _email,
     cart: _cart,
     orderHistory: _orderHistory
@@ -25,15 +25,15 @@ export function watchFirebaseAccountsRef() {
       });
       dispatch(receiveAccount(newAccount));
     });
-  }
-}
-
-function receiveAccount(accountFromFirebase) {
-  return {
-    type: c.RECEIVE_ACCOUNT,
-    account: accountFromFirebase
   };
 }
+
+// function receiveAccount(accountFromFirebase) {
+//   return {
+//     type: c.RECEIVE_ACCOUNT,
+//     account: accountFromFirebase
+//   };
+// }
 
 export const createAccount = (name, username, email, password, id, cart, orderHistory) => ({
   type: types.ADD_ACCOUNT,
