@@ -39,7 +39,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/browse' component={Browse} />
-            <Route path='/register' component={RegisterControl} />
+            <Route path='/register' render={()=><RegisterControl accountList={this.props.masterAccountList} />} />
             <Route path='/sign-in' component={SignIn} />
             <Route path='/account' component={Account} />
             <Route path='/cart' component={Cart} />

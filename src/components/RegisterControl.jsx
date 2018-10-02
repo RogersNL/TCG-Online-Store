@@ -1,5 +1,6 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
+import PropTypes from 'prop-types';
 
 class RegisterControl extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class RegisterControl extends React.Component {
     this.handleFormValidation = this.handleFormValidation.bind(this);
   }
   handleFormValidation(name, username, email, password, password2){
-
+    console.log(props.masterAccountList);
   }
   render(){
     return (
@@ -24,5 +25,7 @@ class RegisterControl extends React.Component {
       );
     }
   }
-
+RegisterControl.propTypes = {
+  masterAccountList: PropTypes.object
+}
 export default RegisterControl;
