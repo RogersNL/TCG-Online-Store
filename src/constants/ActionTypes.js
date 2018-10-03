@@ -1,1 +1,2 @@
 export const ADD_ACCOUNT = 'ADD_ACCOUNT';
+export const RECEIVE_ACCOUNT = 'RECEIVE_ACCOUNT';

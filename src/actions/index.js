@@ -28,12 +28,12 @@ export function watchFirebaseAccountsRef() {
   };
 }
 
-// function receiveAccount(accountFromFirebase) {
-//   return {
-//     type: c.RECEIVE_ACCOUNT,
-//     account: accountFromFirebase
-//   };
-// }
+function receiveAccount(accountFromFirebase) {
+  return {
+    type: c.RECEIVE_ACCOUNT,
+    account: accountFromFirebase
+  };
+}
 
 export const createAccount = (name, username, email, password, id, cart, orderHistory) => ({
   type: types.ADD_ACCOUNT,

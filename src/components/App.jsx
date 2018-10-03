@@ -29,7 +29,6 @@ class App extends React.Component {
     const { dispatch } = this.props;
     const { watchFirebaseAccountsRef } = actions;
     dispatch(watchFirebaseAccountsRef());
-
   }
   render(){
     return (

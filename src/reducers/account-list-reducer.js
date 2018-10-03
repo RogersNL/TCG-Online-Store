@@ -4,7 +4,7 @@ const { c } = constants;
 export default (state = {}, action) => {
   let newState;
   const { name, username, email, password, id, cart, orderHistory } = action;
-  
+
   switch (action.type) {
   case c.ADD_ACCOUNT:
     newState = Object.assign({}, state, {
@@ -18,6 +18,10 @@ export default (state = {}, action) => {
         orderHistory: orderHistory
       }
     });
+    return newState;
+  case c.RECEIVE_ACCOUNT:
+    newState = Object.assign({}, state);
+    newState[action.account.id] = action.account;
     return newState;
   default:
     return state;

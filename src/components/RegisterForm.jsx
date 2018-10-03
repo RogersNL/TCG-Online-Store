@@ -12,14 +12,17 @@ function RegisterForm(props) {
 
   function handleAddingNewAccountFormSubmission(event){
     props.onValidatingForm(_name.value, _username.value, _email.value, _password.value, _passwordconfirm.value);
-    const { dispatch } = props;
-    event.preventDefault();
-    dispatch(addAccount(_name.value, _username.value, _email.value, _password.value, {}, {}));
-    _name.value = '';
-    _username.value = '';
-    _email.value = '';
-    _password.value = '';
-    _passwordconfirm.value = '';
+    console.log(props.submitSuccess);
+    if(props.submitSuccess){
+      const { dispatch } = props;
+      event.preventDefault();
+      dispatch(addAccount(_name.value, _username.value, _email.value, _password.value, {}, {}));
+      _name.value = '';
+      _username.value = '';
+      _email.value = '';
+      _password.value = '';
+      _passwordconfirm.value = '';
+    }
   }
   return (
     <div>
@@ -60,7 +63,8 @@ function RegisterForm(props) {
   );
 }
 RegisterForm.propTypes = {
-  onValidatingForm: PropTypes.func
+  onValidatingForm: PropTypes.func,
+  submitSuccess: PropTypes.bool
 };
 
 RegisterForm = connect()(RegisterForm);
