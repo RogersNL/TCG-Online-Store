@@ -1,6 +1,5 @@
-import * as types from './../constants/ActionTypes';
 import constants from './../constants';
-const { firebaseConfig, c } = constants;
+const { firebaseConfig, c, apiKey } = constants;
 import firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
@@ -36,7 +35,7 @@ function receiveAccount(accountFromFirebase) {
 }
 
 export const createAccount = (name, username, email, password, id, cart, orderHistory) => ({
-  type: types.ADD_ACCOUNT,
+  type: c.ADD_ACCOUNT,
   name,
   username,
   email,
@@ -45,3 +44,12 @@ export const createAccount = (name, username, email, password, id, cart, orderHi
   cart,
   orderHistory
 });
+
+export function fetchSetList(){
+  return fetch(apiKey + 'cards').then(
+    response => response.json(),
+    error => console.log('An error occured.', error)
+  ).then(function(json){
+    console.log(json);
+  });
+}
