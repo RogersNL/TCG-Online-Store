@@ -25,6 +25,7 @@ class App extends React.Component {
       itemList: null,
       selectedAccount: null
     };
+    this.testApi = this.testApi.bind(this);
   }
   componentWillMount() {
     const { dispatch } = this.props;
@@ -32,14 +33,23 @@ class App extends React.Component {
     dispatch(watchFirebaseAccountsRef());
     dispatch(fetchSetList());
   }
+  testApi(){
+    console.log(this.props.masterSetList);
+  }
   render(){
     return (
       <div>
         <NavHeader/>
         <div className="container">
+          <button className='btn btn-danger test' onClick={this.testApi}>test</button>
+          <style jsx>{`
+            .test {
+              margin-left: 200px;
+            }
+          `}</style>
           <Switch>
             <Route exact path='/' component={Home}/>
-            <Route path='/browse' component={Browse} />
+            <Route path='/browse' render={()=><Browse setList={this.props.masterSetList}/>} />
             <Route path='/register' render={()=><RegisterControl accountList={this.props.masterAccountList} />} />
             <Route path='/sign-in' component={SignIn} />
             <Route path='/account' component={Account} />
@@ -58,10 +68,12 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    masterAccountList: state.masterAccountList
+    masterAccountList: state.masterAccountList,
+    masterSetList: state.selectedItem.sets
   };
 };
 App.propTypes = {
-  masterAccountList: PropTypes.object
+  masterAccountList: PropTypes.object,
+  masterSetList: PropTypes.object
 };
 export default withRouter(connect(mapStateToProps)(App));
