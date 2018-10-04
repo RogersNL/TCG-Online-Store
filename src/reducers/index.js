@@ -4,7 +4,7 @@ import accountListReducer from './account-list-reducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-  selectedItem: itemReducer,
+  itemList: itemReducer,
   masterAccountList: accountListReducer,
   selectedAccount: accountReducer
 });

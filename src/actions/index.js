@@ -1,5 +1,5 @@
 import constants from './../constants';
-const { firebaseConfig, c, apiKey } = constants;
+const { firebaseConfig, c } = constants;
 import firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
@@ -50,7 +50,7 @@ export const requestSets = () => ({
 export const receiveSets = (sets) => ({
   type: c.RECEIVE_SETS,
   setList: sets
-})
+});
 export function fetchSetList(){
   return function(dispatch) {
     dispatch(requestSets());

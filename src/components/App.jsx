@@ -1,7 +1,6 @@
 import React from 'react';
 import NavHeader from './NavHeader';
 import Browse from './Browse';
-import RegisterForm from './RegisterForm';
 import Error404 from './Error404';
 import SignIn from './SignIn';
 import Cart from './Cart';
@@ -25,7 +24,7 @@ class App extends React.Component {
       itemList: null,
       selectedAccount: null
     };
-    this.testApi = this.testApi.bind(this);
+    this.handleTestApi = this.handleTestApi.bind(this);
   }
   componentWillMount() {
     const { dispatch } = this.props;
@@ -33,15 +32,15 @@ class App extends React.Component {
     dispatch(watchFirebaseAccountsRef());
     dispatch(fetchSetList());
   }
-  testApi(){
-    console.log(this.props.masterSetList);
+  handleTestApi(){
+    console.log(this.props.masterSetList.sets[0].name);
   }
   render(){
     return (
       <div>
         <NavHeader/>
         <div className="container">
-          <button className='btn btn-danger test' onClick={this.testApi}>test</button>
+          <button className='btn btn-danger test' onClick={this.handleTestApi}>test</button>
           <style jsx>{`
             .test {
               margin-left: 200px;
@@ -69,7 +68,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     masterAccountList: state.masterAccountList,
-    masterSetList: state.selectedItem.sets
+    masterSetList: state.itemList.sets
   };
 };
 App.propTypes = {
