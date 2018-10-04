@@ -13,7 +13,7 @@ function RegisterForm(props) {
   function handleAddingNewAccountFormSubmission(event){
     event.preventDefault();
     props.onValidatingForm(_name.value, _username.value, _email.value, _password.value, _passwordconfirm.value);
-      console.log(props.submitSuccess);
+    console.log(props.submitSuccess);
 
     if(props.submitSuccess){
       const { dispatch } = props;

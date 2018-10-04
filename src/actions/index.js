@@ -44,12 +44,22 @@ export const createAccount = (name, username, email, password, id, cart, orderHi
   cart,
   orderHistory
 });
-
+export const requestSets = () => ({
+  type: c.REQUEST_SETS
+});
+export const receiveSets = (sets) => ({
+  type: c.RECEIVE_SETS,
+  setList: sets
+})
 export function fetchSetList(){
-  return fetch(apiKey + 'cards').then(
-    response => response.json(),
-    error => console.log('An error occured.', error)
-  ).then(function(json){
-    console.log(json);
-  });
+  return function(dispatch) {
+    dispatch(requestSets());
+    return fetch('https://api.pokemontcg.io/v1/sets').then(
+      response => response.json(),
+      error => console.log('An error occured.', error)
+    ).then(function(json){
+      console.log(json);
+      dispatch(receiveSets(json));
+    });
+  };
 }

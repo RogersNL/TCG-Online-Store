@@ -14,6 +14,7 @@ import CheckoutForm from './CheckoutForm';
 import ConfirmCheckout from './ConfirmCheckout';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchSetList } from './../actions';
 import * as actions from './../actions';
 import PropTypes from 'prop-types';
 
@@ -21,7 +22,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedItem: null,
+      itemList: null,
       selectedAccount: null
     };
   }
@@ -29,6 +30,7 @@ class App extends React.Component {
     const { dispatch } = this.props;
     const { watchFirebaseAccountsRef } = actions;
     dispatch(watchFirebaseAccountsRef());
+    dispatch(fetchSetList());
   }
   render(){
     return (

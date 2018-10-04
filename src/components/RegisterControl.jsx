@@ -135,59 +135,59 @@ class RegisterControl extends React.Component {
     let passwordMatched = null;
     if(this.state.formSubmitTry){
       if(!this.state.nameValid){
-        nameError = <div>Please Enter a Name!</div>
+        nameError = <div>Please Enter a Name!</div>;
       } else {
         nameError = null;
       }
       if(!this.state.usernameValid){
-        usernameError = <div>Please Enter a Username!</div>
+        usernameError = <div>Please Enter a Username!</div>;
       } else {
         usernameError = null;
       }
       if(this.state.usernameNotInUse){
-        usernameUsed = <div>This Username is Already in Use!</div>
+        usernameUsed = <div>This Username is Already in Use!</div>;
       } else {
         usernameUsed = null;
       }
       if(!this.state.emailValid){
-        emailError = <div>Please Enter an Email!</div>
+        emailError = <div>Please Enter an Email!</div>;
       } else {
         emailError = null;
       }
       if(this.state.emailNotInUse){
-        emailUsed = <div>This Email is Already in Use!</div>
+        emailUsed = <div>This Email is Already in Use!</div>;
       } else {
         emailUsed = null;
       }
       if(!this.state.passwordValid){
-        passwordError = <div>Please enter a password with at least one uppercase letter, one lowercase letter, one digit, and make sure that it is 8 characters or greater in length.</div>
+        passwordError = <div>Please enter a password with at least one uppercase letter, one lowercase letter, one digit, and make sure that it is 8 characters or greater in length.</div>;
       } else {
         passwordError = null;
       }
       if(!this.state.passwordMatch){
-        passwordMatched = <div>Password confirmation did not match!</div>
+        passwordMatched = <div>Password confirmation did not match!</div>;
       } else {
         passwordMatched = null;
       }
     }
     if(!this.state.formSubmitSuccess){
       currentView =
-      <div>
-        {nameError}
-        {usernameError}
-        {usernameUsed}
-        {emailError}
-        {emailUsed}
-        {passwordError}
-        {passwordMatched}
-      </div>
+        <div>
+          {nameError}
+          {usernameError}
+          {usernameUsed}
+          {emailError}
+          {emailUsed}
+          {passwordError}
+          {passwordMatched}
+        </div>;
     } else {
-      currentView = <RegisterSuccess/>
+      currentView = <RegisterSuccess/>;
     }
     return (
       <div>
         <RegisterForm onValidatingForm={this.handleFormValidation}
-                      submitSuccess={this.state.formSubmitSuccess} />
+          submitSuccess={this.state.formSubmitSuccess} />
         {currentView}
       </div>
     );

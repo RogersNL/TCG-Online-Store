@@ -1,6 +1,8 @@
 import React from 'react';
 
 function SignIn(){
+  let _email = null;
+  let _password = null;
   return (
     <div>
       <form>
