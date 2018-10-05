@@ -2,3 +2,6 @@ export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const RECEIVE_ACCOUNT = 'RECEIVE_ACCOUNT';
 export const REQUEST_SETS = 'REQUEST_SETS';
 export const RECEIVE_SETS = 'RECEIVE_SETS';
+export const SELECT_SET = 'SELECT_SET';
+export const REQUEST_CARDS = 'REQUEST_CARDS';
+export const RECEIVE_CARDS = 'RECEIVE_CARDS';

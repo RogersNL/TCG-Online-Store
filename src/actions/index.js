@@ -63,3 +63,27 @@ export function fetchSetList(){
     });
   };
 }
+export const selectSet = (setCode) => ({
+  type: c.SELECT_SET,
+  selectedCategory: setCode
+});
+export const requestCards = (setCode) => ({
+  type: c.REQUEST_CARDS,
+  codeId: setCode
+});
+export const receiveCards = (cards) => ({
+  type: c.RECEIVE_CARDS,
+  cardList: cards
+});
+export function fetchCardList(setCode){
+  return function(dispatch) {
+    dispatch(requestCards());
+    return fetch('https://api.pokemontcg.io/v1/cards?setCode=' + setCode).then(
+      response => response.json(),
+      error => console.log('An error occured.', error)
+    ).then(function(json){
+      console.log(json);
+      dispatch(receiveCards(json));
+    });
+  };
+}

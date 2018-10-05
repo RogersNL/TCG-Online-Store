@@ -48,7 +48,6 @@ function NavHeader(){
           </form>
         </div>
       </nav>
-
     </div>
   );
 }
