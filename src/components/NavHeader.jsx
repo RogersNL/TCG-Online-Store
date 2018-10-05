@@ -49,17 +49,7 @@ function NavHeader(props){
             <li className="nav-item">
               <Link className="nav-link" to="/browse">Browse</Link>
             </li>
-            <li className="nav-item dropdown">
-              <Link className="nav-link dropdown-toggle" to="/browse" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-              </Link>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">Category 1</a>
-                <a className="dropdown-item" href="#">Category 2</a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">Category 3</a>
-              </div>
-            </li>
+        
           </ul>
           {visibleLinks}
         </div>

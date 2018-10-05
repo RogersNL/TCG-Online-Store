@@ -1,48 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Home(){
   return (
     <div>
       <div className="jumbotron">
-        <h1>O N L I N E S T O R E</h1>
+        <h1>WELCOME!</h1>
+        <h1>Pokemon Trading Card Store</h1>
       </div>
-      <div className="row">
-        <div className="card col-md-4">
+      <div className="">
+        <div className="card text-center">
           <div className="card-body">
-            <h3>Shoes</h3>
-            <div><a href="#">Click >></a></div>
+            <h3>New here? Register Now!</h3>
+            <div><Link to='/register'>Register</Link></div>
           </div>
         </div>
-        <div className="card col-md-4">
+        <div className="card text-center">
           <div className="card-body">
-            <h3>Pants</h3>
-            <div><a href="#">Click >></a></div>
+            <h3>Existing Users Sign in Here!</h3>
+            <div><Link to='/sign-in'>Sign In</Link></div>
           </div>
         </div>
-        <div className="card col-md-4">
+        <div className="card text-center">
           <div className="card-body">
-            <h3>Hats</h3>
-            <div><a href="#">Click >></a></div>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="card col-md-4">
-          <div className="card-body">
-            <h3>Electronics</h3>
-            <div><a href="#">Click >></a></div>
-          </div>
-        </div>
-        <div className="card col-md-4">
-          <div className="card-body">
-            <h3>Toys</h3>
-            <div><a href="#">Click >></a></div>
-          </div>
-        </div>
-        <div className="card col-md-4">
-          <div className="card-body">
-            <h3>Seasonal</h3>
-            <div><a href="#">Click >></a></div>
+            <h3>Browse Our Selection</h3>
+            <div><Link to='/browse'>Browse</Link></div>
           </div>
         </div>
       </div>
