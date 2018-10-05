@@ -36,14 +36,14 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <NavHeader/>
+        <NavHeader account={this.props.selectedAccount}/>
         <div className="container">
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/browse' render={()=><Browse setList={this.props.masterSetList}/>} />
             <Route path='/browse/:cardId' render={()=><ItemList cardList={this.props.selectedSet} />} />
             <Route path='/register' render={()=><RegisterControl accountList={this.props.masterAccountList} />} />
-            <Route path='/sign-in' component={SignIn} />
+            <Route path='/sign-in' render={()=><SignIn accountList={this.props.masterAccountList} />} />
             <Route path='/account' component={Account} />
             <Route path='/cart' component={Cart} />
             <Route path='/order-history' component={OrderHistory} />
@@ -62,12 +62,14 @@ const mapStateToProps = state => {
   return {
     masterAccountList: state.masterAccountList,
     masterSetList: state.categoryList.sets,
-    selectedSet: state.selectedCategory.cards
+    selectedSet: state.selectedCategory.cards,
+    selectedAccount: state.selectedAccount
   };
 };
 App.propTypes = {
   masterAccountList: PropTypes.object,
   masterSetList: PropTypes.object,
-  selectedSet: PropTypes.object
+  selectedSet: PropTypes.object,
+  selectedAccount: PropTypes.object
 };
 export default withRouter(connect(mapStateToProps)(App));

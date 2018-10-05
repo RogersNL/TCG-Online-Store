@@ -5,3 +5,4 @@ export const RECEIVE_SETS = 'RECEIVE_SETS';
 export const SELECT_SET = 'SELECT_SET';
 export const REQUEST_CARDS = 'REQUEST_CARDS';
 export const RECEIVE_CARDS = 'RECEIVE_CARDS';
+export const SELECT_ACCOUNT = 'SELECT_ACCOUNT';

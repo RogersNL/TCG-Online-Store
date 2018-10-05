@@ -1,11 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { selectAccount } from './../actions';
 
-function SignIn(){
+function SignIn(props){
   let _email = null;
   let _password = null;
+  function handleSigningInFormSubmission(){
+    const { dispatch } = props;
+    Object.keys(props.accountList).map((account) => {
+      if(_email.value === props.accountList[account].email && _password.value === props.accountList[account].password){
+        dispatch(selectAccount(props.accountList[account]));
+      } else {
+        console.log('email: ' + _email.value +'Log in failed');
+      }
+    })
+  }
   return (
     <div>
-      <form>
+      <form onSubmit={handleSigningInFormSubmission}>
         <input
           type='text'
           id='email'
@@ -23,5 +36,7 @@ function SignIn(){
     </div>
   );
 }
-
-export default SignIn;
+SignIn.propTypes = {
+  accountList: PropTypes.object
+}
+export default connect()(SignIn);

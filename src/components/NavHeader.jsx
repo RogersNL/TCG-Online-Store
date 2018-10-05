@@ -1,11 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutAccount } from './../actions';
 
-function NavHeader(){
+function NavHeader(props){
+  function handleLogOutFormSubmission(){
+    const { dispatch } = props;
+    dispatch(logoutAccount());
+  }
+  let visibleLinks = null;
+  if(props.account.name) {
+    visibleLinks =
+      <ul className="navbar-nav">
+        <li className="nav-link">Welcome, {props.account.name}</li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/account">Account</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/cart">My Cart</Link>
+        </li>
+        <li className="nav-link">
+          <form onSubmit={handleLogOutFormSubmission}>
+            <button type='submit' className='btn btn-secondary'>Log Out</button>
+          </form></li>
+      </ul>
+  } else {
+    visibleLinks=
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link className="nav-link" to="/sign-in">Sign in</Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/register">Register</Link>
+      </li>
+    </ul>
+  }
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className="navbar-brand" to="/">Online Store</Link>
+        <Link className="navbar-brand" to="/">Pokemon Trading Card Store</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -26,30 +60,14 @@ function NavHeader(){
                 <a className="dropdown-item" href="#">Category 3</a>
               </div>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/sign-in">Sign in</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/register">Register</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/admin">Admin</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/account">Account</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cart">My Cart</Link>
-            </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          {visibleLinks}
         </div>
       </nav>
     </div>
   );
 }
-
-export default NavHeader;
+NavHeader.propTypes = {
+  account: PropTypes.object
+}
+export default connect()(NavHeader);

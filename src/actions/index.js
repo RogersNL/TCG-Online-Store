@@ -87,3 +87,11 @@ export function fetchCardList(setCode){
     });
   };
 }
+export const selectAccount = (account) => ({
+  type: c.SELECT_ACCOUNT,
+  selectedAccount: account
+})
+export const logoutAccount = () => ({
+  type: c.SELECT_ACCOUNT,
+  selectedAccount: {}
+})

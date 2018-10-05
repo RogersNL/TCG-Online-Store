@@ -21,7 +21,7 @@ function ItemList(props){
   } else {
     visibleContent = <div>
       <h3>There doesn't seem to be anything here!</h3>
-      <Link to="/">Back to Home</Link>
+      <Link to="/browse">Back to Browse</Link>
     </div>
   }
   return (
